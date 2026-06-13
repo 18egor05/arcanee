@@ -653,7 +653,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
             targets.Add(owner);
 
             var stainEv = new SpilledOnEvent(uid, splitSolution.Clone()); // Gaby
-            RaiseLocalEvent(uid, stainEv);
+            RaiseLocalEvent(owner, stainEv);
 
             _reactive.DoEntityReaction(owner, splitSolution, ReactionMethod.Touch);
             _popups.PopupEntity(
