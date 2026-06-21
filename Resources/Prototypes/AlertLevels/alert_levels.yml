@@ -196,6 +196,7 @@
           rolloffFactor: 2
       alarmInterval: 60
       # Orion-End
+      shuttleTime: 1200
     delta:
       announcement: alert-level-delta-announcement
       selectable: false
