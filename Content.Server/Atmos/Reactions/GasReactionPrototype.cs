@@ -8,7 +8,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.Atmos.Reactions
 {
     [Prototype]
-    public sealed class GasReactionPrototype : IPrototype
+    public sealed partial class GasReactionPrototype : IPrototype
     {
         [ViewVariables]
         [IdDataField]

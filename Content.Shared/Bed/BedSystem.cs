@@ -1,4 +1,6 @@
 using Content.Shared.Actions;
+using Content.Shared._Orion.Construction;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared.Bed.Components;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Body.Events;
@@ -41,6 +43,8 @@ public sealed class BedSystem : EntitySystem
         SubscribeLocalEvent<StasisBedComponent, UnstrappedEvent>(OnStasisUnstrapped);
         SubscribeLocalEvent<StasisBedComponent, GotEmaggedEvent>(OnStasisEmagged);
         SubscribeLocalEvent<StasisBedComponent, PowerChangedEvent>(OnPowerChanged);
+        SubscribeLocalEvent<StasisBedComponent, RefreshPartsEvent>(OnStasisRefreshParts); // Orion
+        SubscribeLocalEvent<StasisBedComponent, UpgradeExamineEvent>(OnStasisUpgradeExamine); // Orion
         SubscribeLocalEvent<StasisBedBuckledComponent, GetMetabolicMultiplierEvent>(OnStasisGetMetabolicMultiplier);
 
         _sleepingQuery = GetEntityQuery<SleepingComponent>();
@@ -110,6 +114,22 @@ public sealed class BedSystem : EntitySystem
     {
         UpdateMetabolisms(ent.Owner);
     }
+
+    // Orion-Edit-Start
+    private void OnStasisRefreshParts(EntityUid uid, StasisBedComponent component, RefreshPartsEvent args)
+    {
+        var capacitorTier = args.GetPartRating(MachinePartIds.Capacitor);
+        component.PowerLoad = component.BasePowerLoad *
+            RefreshPartsEvent.GetLinearMultiplier(capacitorTier, 0.1f, 0.5f, 1.2f);
+        _powerReceiver.SetLoad(uid, component.PowerLoad);
+    }
+
+    private static void OnStasisUpgradeExamine(EntityUid uid, StasisBedComponent component, UpgradeExamineEvent args)
+    {
+        args.AddPercentageUpgrade("machine-upgrade-stasis-bed-power",
+            component.PowerLoad / component.BasePowerLoad);
+    }
+    // Orion-Edit-End
 
     private void OnStasisGetMetabolicMultiplier(Entity<StasisBedBuckledComponent> ent, ref GetMetabolicMultiplierEvent args)
     {

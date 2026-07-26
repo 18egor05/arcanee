@@ -11,7 +11,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
+using Content.Shared._Arcane.ERP;
 using Content.Shared._RMC14.LinkAccount;
+using Content.Shared._Orion.CustomGhost;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Database;
@@ -73,7 +75,12 @@ namespace Content.Server.Database
             foreach (var favorite in prefs.ConstructionFavorites)
                 constructionFavorites.Add(new ProtoId<ConstructionPrototype>(favorite));
 
-            return new PlayerPreferences(profiles, prefs.SelectedCharacterSlot, Color.FromHex(prefs.AdminOOCColor), constructionFavorites);
+            return new PlayerPreferences(
+                profiles,
+                prefs.SelectedCharacterSlot,
+                Color.FromHex(prefs.AdminOOCColor),
+                new ProtoId<CustomGhostPrototype>(prefs.GhostId),
+                constructionFavorites);
         }
 
         public async Task SaveSelectedCharacterIndexAsync(NetUserId userId, int index)
@@ -152,6 +159,7 @@ namespace Content.Server.Database
                 UserId = userId.UserId,
                 SelectedCharacterSlot = 0,
                 AdminOOCColor = Color.Red.ToHex(),
+                GhostId = "default", // Orion
                 ConstructionFavorites = [],
             };
 
@@ -161,7 +169,12 @@ namespace Content.Server.Database
 
             await db.DbContext.SaveChangesAsync();
 
-            return new PlayerPreferences(new[] { new KeyValuePair<int, ICharacterProfile>(0, defaultProfile) }, 0, Color.FromHex(prefs.AdminOOCColor), []);
+            return new PlayerPreferences(
+                new[] { new KeyValuePair<int, ICharacterProfile>(0, defaultProfile) },
+                0,
+                Color.FromHex(prefs.AdminOOCColor),
+                new ProtoId<CustomGhostPrototype>("default"),
+                []);
         }
 
         public async Task DeleteSlotAndSetSelectedIndex(NetUserId userId, int deleteSlot, int newSlot)
@@ -187,6 +200,16 @@ namespace Content.Server.Database
 
         }
 
+        // Orion-Start
+        public async Task SaveGhostTypeAsync(NetUserId userId, ProtoId<CustomGhostPrototype> proto)
+        {
+            await using var db = await GetDb();
+            var prefs = await db.DbContext.Preference.SingleAsync(p => p.UserId == userId.UserId);
+            prefs.GhostId = proto.Id;
+            await db.DbContext.SaveChangesAsync();
+        }
+        // Orion-End
+
         public async Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites)
         {
             await using var db = await GetDb();
@@ -199,6 +222,40 @@ namespace Content.Server.Database
 
             await db.DbContext.SaveChangesAsync();
         }
+
+        // Arcane-Start
+        public async Task<string?> GetErpOrganPreferencesAsync(NetUserId userId, int slot)
+        {
+            await using var db = await GetDb();
+            var row = await db.DbContext.ErpOrganPreferences
+                .FirstOrDefaultAsync(e => e.UserId == userId.UserId && e.Slot == slot);
+            return row?.Data;
+        }
+
+        public async Task SaveErpOrganPreferencesAsync(NetUserId userId, int slot, string data)
+        {
+            await using var db = await GetDb();
+            var row = await db.DbContext.ErpOrganPreferences
+                .FirstOrDefaultAsync(e => e.UserId == userId.UserId && e.Slot == slot);
+
+            if (row == null)
+            {
+                row = new ErpOrganPreference
+                {
+                    UserId = userId.UserId,
+                    Slot = slot,
+                    Data = data,
+                };
+                db.DbContext.ErpOrganPreferences.Add(row);
+            }
+            else
+            {
+                row.Data = data;
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+        // Arcane-End
 
         private static async Task SetSelectedCharacterSlotAsync(NetUserId userId, int newSlot, ServerDbContext db)
         {
@@ -221,6 +278,12 @@ namespace Content.Server.Database
             var gender = sex == Sex.Male ? Gender.Male : Gender.Female;
             if (Enum.TryParse<Gender>(profile.Gender, true, out var genderVal))
                 gender = genderVal;
+
+            // Art-TTS Start
+            var voice = profile.Voice;
+            if (string.IsNullOrEmpty(voice))
+                voice = SharedHumanoidAppearanceSystem.DefaultSexVoice[sex];
+            // Art-TTS End
 
             // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
             var markingsRaw = profile.Markings?.Deserialize<List<string>>();
@@ -263,15 +326,30 @@ namespace Content.Server.Database
             }
 
             var barkVoice = profile.BarkVoice ?? SharedHumanoidAppearanceSystem.DefaultBarkVoice; // Goob Station - Barks
+            var erpPreference = (ErpPreference) profile.ErpPreference; // Arcane
 
             return new HumanoidCharacterProfile(
                 profile.CharacterName,
                 profile.FlavorText,
+                // Orion-Start
+                profile.OOCFlavorText,
+                profile.CharacterFlavorText,
+                profile.GreenFlavorText,
+                profile.YellowFlavorText,
+                profile.RedFlavorText,
+                profile.TagsFlavorText,
+                profile.LinksFlavorText,
+                profile.NSFWFlavorText,
+                profile.NSFWOOCFlavorText,
+                profile.NSFWLinksFlavorText,
+                profile.NSFWTagsFlavorText,
+                // Orion-End
                 profile.Species,
                 profile.Height, // Goobstation: port EE height/width sliders
                 profile.Width, // Goobstation: port EE height/width sliders
                 profile.Age,
                 sex,
+                voice, // Art-TTS
                 gender,
                 new HumanoidCharacterAppearance
                 (
@@ -289,7 +367,8 @@ namespace Content.Server.Database
                 antags.ToHashSet(),
                 traits.ToHashSet(),
                 loadouts,
-                barkVoice // Goob Station - Barks
+                barkVoice, // Goob Station - Barks
+                erpPreference // Arcane
             );
         }
 
@@ -306,11 +385,25 @@ namespace Content.Server.Database
 
             profile.CharacterName = humanoid.Name;
             profile.FlavorText = humanoid.FlavorText;
+            // Orion-Start
+            profile.OOCFlavorText = humanoid.OocFlavorText;
+            profile.CharacterFlavorText = humanoid.CharacterFlavorText;
+            profile.GreenFlavorText = humanoid.GreenFlavorText;
+            profile.YellowFlavorText = humanoid.YellowFlavorText;
+            profile.RedFlavorText = humanoid.RedFlavorText;
+            profile.TagsFlavorText = humanoid.TagsFlavorText;
+            profile.LinksFlavorText = humanoid.LinksFlavorText;
+            profile.NSFWFlavorText = humanoid.NsfwFlavorText;
+            profile.NSFWOOCFlavorText = humanoid.NsfwOOCFlavorText;
+            profile.NSFWLinksFlavorText = humanoid.NsfwLinksFlavorText;
+            profile.NSFWTagsFlavorText = humanoid.NsfwTagsFlavorText;
+            // Orion-End
             profile.Species = humanoid.Species;
             profile.Height = humanoid.Height; // Goobstation: port EE height/width sliders
             profile.Width = humanoid.Width; // Goobstation: port EE height/width sliders
             profile.Age = humanoid.Age;
             profile.Sex = humanoid.Sex.ToString();
+            profile.Voice = humanoid.Voice; // Art-TTS
             profile.Gender = humanoid.Gender.ToString();
             profile.HairName = appearance.HairStyleId;
             profile.HairColor = appearance.HairColor.ToHex();
@@ -343,6 +436,7 @@ namespace Content.Server.Database
             );
 
             profile.BarkVoice = humanoid.BarkVoice; // Goob Station - Barks
+            profile.ErpPreference = (int) humanoid.ErpPreference; // Arcane
 
             profile.Loadouts.Clear();
 
@@ -1726,6 +1820,43 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             await using var db = await GetDb(cancel);
             return await db.DbContext.RMCLinkedAccounts.AnyAsync(l => l.PlayerId == player, cancel);
 
+        }
+
+        public async Task<(bool Linked, bool HasPlayerRole)> GetLinkedAccountStatus(Guid player, CancellationToken cancel)
+        {
+            await using var db = await GetDb(cancel);
+            var linked = await db.DbContext.RMCLinkedAccounts
+                .Include(l => l.Discord)
+                .FirstOrDefaultAsync(l => l.PlayerId == player, cancel);
+
+            return linked == null
+                ? (false, false)
+                : (true, linked.Discord.HasPlayerRole);
+        }
+
+        public async Task<bool> UnlinkDiscordAccount(Guid player, CancellationToken cancel)
+        {
+            await using var db = await GetDb(cancel);
+            var linked = await db.DbContext.RMCLinkedAccounts
+                .FirstOrDefaultAsync(l => l.PlayerId == player, cancel);
+
+            if (linked == null)
+                return false;
+
+            db.DbContext.RMCLinkedAccounts.Remove(linked);
+
+            var linkingCode = await db.DbContext.RMCLinkingCodes
+                .FirstOrDefaultAsync(l => l.PlayerId == player, cancel);
+            if (linkingCode != null)
+                db.DbContext.RMCLinkingCodes.Remove(linkingCode);
+
+            var patron = await db.DbContext.RMCPatrons
+                .FirstOrDefaultAsync(p => p.PlayerId == player, cancel);
+            if (patron != null)
+                db.DbContext.RMCPatrons.Remove(patron);
+
+            await db.DbContext.SaveChangesAsync(cancel);
+            return true;
         }
 
         public async Task<RMCPatron?> GetPatron(Guid player, CancellationToken cancel)

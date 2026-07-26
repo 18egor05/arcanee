@@ -1,6 +1,13 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._Arcane.Discord;
+using Content.Server._Arcane.ERP.Preferences;
+using Content.Server._Art.TTS;
 using Content.Server._Goobstation.Antag;
+using Content.Server._Orion.ServerProtection;
+using Content.Server._Orion.ServerProtection.Administration;
+using Content.Server._Orion.ServerProtection.Chat;
+using Content.Server._Orion.ServerProtection.Emoting;
 using Content.Server._RMC14.LinkAccount; // RMC - Patreon
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -29,6 +36,7 @@ using Content.Server.Voting.Managers;
 using Content.Server.Worldgen.Tools;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Administration.Managers;
+using Content.Shared._Arcane.Sponsor;
 using Content.Shared.Chat;
 using Content.Shared.IoC;
 using Content.Shared.Kitchen;
@@ -86,5 +94,17 @@ internal static class ServerContentIoC
         deps.Register<DiscordChatLink>();
         deps.Register<LastRolledAntagManager>(); // Goobstation - antag pity
         deps.Register<LinkAccountManager>(); // RMC - Patreon
+        deps.Register<ISharedSponsorManager, LinkAccountManager>(); // Arcane
+        // Orion-Start
+        deps.Register<ServerProtectionAuditManager>();
+        deps.Register<ServerProtectionPunishmentSystem>();
+        deps.Register<ChatProtectionSystem>();
+        deps.Register<EmoteProtectionSystem>();
+        deps.Register<AdminActionProtectionSystem>();
+        // Orion-End
+        deps.Register<ErpOrganPreferencesManager>(); // Arcane
+        deps.Register<TTSManager>(); // Art-TTS
+        deps.Register<BanWebhooks>(); // Arcane
+        deps.Register<ChatLogsWebhook>(); // Arcane
     }
 }

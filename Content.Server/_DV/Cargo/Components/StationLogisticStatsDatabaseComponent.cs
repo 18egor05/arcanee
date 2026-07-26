@@ -1,9 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.CartridgeLoader.Cartridges;
-/*
-
- Upstreamer todo Merge these todo <mailfix>
 
 namespace Content.Server._DV.Cargo.Components;
 
@@ -16,4 +13,3 @@ public sealed partial class StationLogisticStatsComponent : Component
     [DataField]
     public MailStats Metrics { get; set; }
 }
-*/

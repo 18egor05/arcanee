@@ -256,4 +256,29 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
 
         return _roles;
     }
+
+    public bool TryGetTrackerTimes(
+        ICommonSession session,
+        [NotNullWhen(true)] out Dictionary<string, TimeSpan>? time)
+    {
+        if (session != _playerManager.LocalSession)
+        {
+            time = null;
+            return false;
+        }
+
+        time = _roles;
+        return true;
+    }
+
+    /// <summary>
+    /// Checks requirements stored directly on a role entity.
+    /// </summary>
+    public bool IsAllowed(
+        HashSet<JobRequirement>? requirements,
+        HumanoidCharacterProfile? profile,
+        [NotNullWhen(false)] out FormattedMessage? reason)
+    {
+        return CheckRoleRequirements(requirements, profile, out reason);
+    }
 }

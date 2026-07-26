@@ -198,7 +198,7 @@
         - id: MaterialSiloMachineCircuitboard
         - id: SheetSteel1
           amount: 5
-        - id: MicroManipulatorStockPart
+        - id: MicroServoStockPart # Orion-Edit
           amount: 4
         - id: CableApcStack1
           amount: 2

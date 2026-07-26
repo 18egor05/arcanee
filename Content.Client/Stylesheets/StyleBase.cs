@@ -13,6 +13,15 @@ namespace Content.Client.Stylesheets
     [Obsolete("Please use the new sheetlet system to define styles, and remove all references to this class as it may be deleted in the future")]
     public abstract class StyleBase
     {
+        // Orion-Edit-Start: compatibility names used by Orion and Arcane UI.
+        public const string ButtonOpenBoth = StyleClass.ButtonOpenBoth;
+        public const string ButtonSquare = StyleClass.ButtonSquare;
+        public const string ButtonCaution = StyleClass.Negative;
+        public const string ClassLowDivider = StyleClass.LowDivider;
+        public const string StyleClassLabelHeading = StyleClass.LabelHeading;
+        public const string StyleClassLabelSubText = StyleClass.LabelSubText;
+        // Orion-Edit-End
+
         public abstract Stylesheet Stylesheet { get; }
 
         protected StyleRule[] BaseRules { get; }

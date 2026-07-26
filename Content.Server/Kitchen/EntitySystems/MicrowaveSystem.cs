@@ -11,6 +11,7 @@ using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Temperature.Components;
 using Content.Server.Temperature.Systems;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Chemistry.Components.SolutionManager;
@@ -99,6 +100,8 @@ namespace Content.Server.Kitchen.EntitySystems
             SubscribeLocalEvent<MicrowaveComponent, MicrowaveEjectMessage>(OnEjectMessage);
             SubscribeLocalEvent<MicrowaveComponent, MicrowaveEjectSolidIndexedMessage>(OnEjectIndex);
             SubscribeLocalEvent<MicrowaveComponent, MicrowaveSelectCookTimeMessage>(OnSelectTime);
+            SubscribeLocalEvent<MicrowaveComponent, RefreshPartsEvent>(OnPartsRefresh); // Orion
+            SubscribeLocalEvent<MicrowaveComponent, UpgradeExamineEvent>(OnUpgradeExamine); // Orion
 
             SubscribeLocalEvent<ActiveMicrowaveComponent, ComponentStartup>(OnCookStart);
             SubscribeLocalEvent<ActiveMicrowaveComponent, ComponentShutdown>(OnCookStop);
@@ -288,8 +291,45 @@ namespace Content.Server.Kitchen.EntitySystems
 
         private void OnMapInit(Entity<MicrowaveComponent> ent, ref MapInitEvent args)
         {
+            // Orion-Edit-Start
+            ent.Comp.BaseCookTimeMultiplier = ent.Comp.CookTimeMultiplier;
+            ent.Comp.BaseCapacity = ent.Comp.Capacity;
+            ent.Comp.BaseExplosionChance = ent.Comp.ExplosionChance;
+            // Orion-Edit-End
+
             _deviceLink.EnsureSinkPorts(ent, ent.Comp.OnPort);
         }
+
+        // Orion-Edit-Start
+        private void OnPartsRefresh(EntityUid uid, MicrowaveComponent component, RefreshPartsEvent args)
+        {
+            var microLaserTier = args.GetPartRating(component.MicroLaserPart);
+            var matterBinTier = args.GetPartRating(component.MatterBinPart);
+            component.CookTimeMultiplier = component.BaseCookTimeMultiplier *
+                RefreshPartsEvent.GetLinearMultiplier(microLaserTier, 0.1f, 0.5f, 1.2f);
+            component.ExplosionChance = MathF.Max(0f, component.BaseExplosionChance - microLaserTier * 0.05f);
+            component.Capacity = (int) MathF.Round(component.BaseCapacity *
+                RefreshPartsEvent.GetPositiveTierMultiplier(matterBinTier));
+            UpdateUserInterfaceState(uid, component);
+        }
+
+        private static void OnUpgradeExamine(EntityUid uid, MicrowaveComponent component, UpgradeExamineEvent args)
+        {
+            var speedMultiplier = component.CookTimeMultiplier <= 0f
+                ? 1f
+                : 1f / component.CookTimeMultiplier;
+            var capacityMultiplier = component.BaseCapacity <= 0
+                ? 1f
+                : (float) component.Capacity / component.BaseCapacity;
+            var malfunctionReduction = component.BaseExplosionChance <= 0f
+                ? 1f
+                : component.ExplosionChance / component.BaseExplosionChance;
+
+            args.AddPercentageUpgrade("machine-upgrade-cook-speed", speedMultiplier);
+            args.AddPercentageUpgrade("machine-upgrade-capacity", capacityMultiplier);
+            args.AddPercentageUpgrade("machine-upgrade-malfunction-reduction", malfunctionReduction);
+        }
+        // Orion-Edit-End
 
         /// <summary>
         /// Kills the user by microwaving their head

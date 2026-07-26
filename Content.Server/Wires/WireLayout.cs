@@ -13,7 +13,7 @@ namespace Content.Server.Wires;
 ///     WiresSystem as a functional wire set.
 /// </summary>
 [Prototype]
-public sealed class WireLayoutPrototype : IPrototype, IInheritingPrototype
+public sealed partial class WireLayoutPrototype : IPrototype, IInheritingPrototype
 {
     [IdDataField]
     public string ID { get; private set; } = default!;

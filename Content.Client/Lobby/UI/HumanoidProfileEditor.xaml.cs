@@ -2470,41 +2470,10 @@ namespace Content.Client.Lobby.UI
         {
             if (Profile is null) return;
 
-            var skin = _prototypeManager.Index<SpeciesPrototype>(Profile.Species).SkinColoration;
-            var color = previous.Appearance.SkinColor;
-
-            switch (skin)
-            {
-                case HumanoidSkinColor.HumanToned:
-                        var tone = SkinColor.HumanSkinToneFromColor(previous.Appearance.SkinColor);
-                        color = SkinColor.HumanSkinTone((int)tone);
-                        Skin.Value = tone;
-
-                        Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithSkinColor(color));//
-                        break;
-                case HumanoidSkinColor.Hues:
-                        break;
-                case HumanoidSkinColor.TintedHues:
-                        color = SkinColor.TintedHues(previous.Appearance.SkinColor);
-
-                        Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithSkinColor(color));
-                        break;
-                case HumanoidSkinColor.VoxFeathers:
-                        color = SkinColor.ClosestVoxColor(previous.Appearance.SkinColor);
-
-                        Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithSkinColor(color));
-                        break;
-                case HumanoidSkinColor.NoColor:
-                        color = Color.White;
-
-                        Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithSkinColor(color));
-                        break;
-                case HumanoidSkinColor.AnimalFur:
-                        color = SkinColor.ClosestAnimalFurColor(previous.Appearance.SkinColor);
-
-                        Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithSkinColor(color));
-                        break;
-            }
+            var species = _prototypeManager.Index<SpeciesPrototype>(Profile.Species);
+            var strategy = _prototypeManager.Index(species.SkinColoration).Strategy;
+            var color = strategy.EnsureVerified(previous.Appearance.SkinColor);
+            Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithSkinColor(color));
 
             _rgbSkinColorSelector.Color = color;
 

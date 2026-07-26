@@ -16,6 +16,11 @@ namespace Content.Shared.Ghost.Roles
         public string Rules { get; set; }
 
         /// <summary>
+        /// Additional requirements declared directly on the ghost role entity.
+        /// </summary>
+        public HashSet<JobRequirement>? Requirements { get; set; }
+
+        /// <summary>
         /// A list of all antag and job prototype IDs of the ghost role and its mind role(s).
         /// </summary>
         public (List<ProtoId<JobPrototype>>?,List<ProtoId<AntagPrototype>>?)  RolePrototypes;

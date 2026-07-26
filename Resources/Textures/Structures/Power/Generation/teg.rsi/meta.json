@@ -1,14 +1,22 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from https://github.com/Baystation12/Baystation12/blob/fc2196fa74492570e5abb847085afca0e53f4ea8/icons/obj/power.dmi. Modified to split light layers",
+  "copyright": "Taken from https://github.com/Baystation12/Baystation12/blob/fc2196fa74492570e5abb847085afca0e53f4ea8/icons/obj/power.dmi. Modified to split light layers. Unassembled sprites taken from https://github.com/TauCetiStation/TauCetiClassic/blob/master/icons/obj/machines/power/thermoelectric.dmi.",
   "size": {
     "x": 32,
     "y": 32
   },
   "states": [
-	{
+    {
       "name": "teg",
+      "directions": 4
+    },
+    {
+      "name": "circ-unassembled-0",
+      "directions": 4
+    },
+    {
+      "name": "teg-unassembled",
       "directions": 4
     },
 	{

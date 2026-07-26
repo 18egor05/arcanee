@@ -8,7 +8,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.Holiday
 {
     [Prototype]
-    public sealed class HolidayPrototype : IPrototype
+    public sealed partial class HolidayPrototype : IPrototype
     {
         [DataField("name")] public string Name { get; private set; } = string.Empty;
 

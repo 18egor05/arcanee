@@ -25,13 +25,15 @@
   supervisors: job-supervisors-captain
   canBeAntag: false
   guides: # goobstation
-  - Medical
-  - ChiefMedicalOfficerSOP
-  - MedicalSOP
-  - Command
+  # - Medical # Orion-Edit: this fork does not ship the upstream SOP entries
+  # - ChiefMedicalOfficerSOP
+  # - MedicalSOP
+  # - Command
   - Chemicals
   - Virology
   goobcoins: 40 #Goob content
+  salary: 120 # Orion
+  payrollDepartmentAccount: Command # Orion
   access:
   - Medical
   - Command
@@ -52,6 +54,8 @@
     components:
     - type: SurgerySpeedModifier
       speedModifier: 2
+  contracts: # Arcane
+  - DocumentContractEmploymentCommand
 
 - type: startingGear
   id: CMOGear

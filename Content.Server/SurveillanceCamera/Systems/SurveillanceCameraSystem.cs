@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Administration.Logs;
+using Content.Server._Orion.Bitrunning.Components;
+using Content.Shared._Orion.Bitrunning.Components;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Chat; // Einstein Engines - Languages
@@ -248,7 +250,7 @@ public sealed class SurveillanceCameraSystem : SharedSurveillanceCameraSystem
 
         var ev = new SurveillanceCameraDeactivateEvent(camera);
 
-        RemoveActiveViewers(camera, new(component.ActiveViewers), null, component);
+        RemoveActiveViewers(camera, new(component.ActiveViewers.Keys), null, component);
         component.Active = false;
 
         // Send a targetted event to all monitors.
@@ -297,8 +299,9 @@ public sealed class SurveillanceCameraSystem : SharedSurveillanceCameraSystem
             return;
         }
 
-        _viewSubscriberSystem.AddViewSubscriber(camera, actor.PlayerSession);
-        component.ActiveViewers.Add(player);
+        var subscribeTarget = ResolveSubscribeTarget(camera);
+        _viewSubscriberSystem.AddViewSubscriber(subscribeTarget, actor.PlayerSession);
+        component.ActiveViewers[player] = subscribeTarget;
 
         if (monitor != null)
         {
@@ -358,7 +361,10 @@ public sealed class SurveillanceCameraSystem : SharedSurveillanceCameraSystem
             return;
 
         if (Resolve(player, ref actor))
-            _viewSubscriberSystem.RemoveViewSubscriber(camera, actor.PlayerSession);
+        {
+            var subscribeTarget = component.ActiveViewers.GetValueOrDefault(player, camera);
+            _viewSubscriberSystem.RemoveViewSubscriber(subscribeTarget, actor.PlayerSession);
+        }
 
         component.ActiveViewers.Remove(player);
 
@@ -389,6 +395,52 @@ public sealed class SurveillanceCameraSystem : SharedSurveillanceCameraSystem
             UpdateVisuals(camera, component);
         }
     }
+
+    // Orion-Start
+    public void ConfigureCameraNetwork(
+        EntityUid uid,
+        ProtoId<DeviceFrequencyPrototype> receiveFrequencyId,
+        ProtoId<DeviceFrequencyPrototype>? transmitFrequencyId = null,
+        SurveillanceCameraComponent? camera = null,
+        DeviceNetworkComponent? deviceNet = null)
+    {
+        if (!Resolve(uid, ref camera, ref deviceNet))
+            return;
+
+        deviceNet.ReceiveFrequencyId = receiveFrequencyId;
+        if (transmitFrequencyId != null)
+            deviceNet.TransmitFrequencyId = transmitFrequencyId.Value;
+
+        if (!camera.AvailableNetworks.Contains(receiveFrequencyId))
+            camera.AvailableNetworks.Add(receiveFrequencyId);
+
+        camera.NetworkSet = true;
+        Dirty(uid, deviceNet);
+    }
+
+    public void ClearActiveViewers(EntityUid camera, SurveillanceCameraComponent? component = null)
+    {
+        if (!Resolve(camera, ref component))
+            return;
+
+        RemoveActiveViewers(camera, new HashSet<EntityUid>(component.ActiveViewers.Keys), component: component);
+    }
+
+    private EntityUid ResolveSubscribeTarget(EntityUid camera)
+    {
+        if (TryComp<AvatarNavRelayComponent>(camera, out var relay) &&
+            relay.RelayEntity is { } relayUid &&
+            Exists(relayUid))
+            return relayUid;
+
+        if (TryComp<NetpodComponent>(camera, out var pod) &&
+            pod.Avatar is { } avatar &&
+            Exists(avatar))
+            return avatar;
+
+        return camera;
+    }
+    // Orion-End
 
     private void UpdateVisuals(EntityUid uid, SurveillanceCameraComponent? component = null, AppearanceComponent? appearance = null)
     {

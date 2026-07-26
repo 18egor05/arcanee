@@ -28,12 +28,14 @@
       #any MRP using our code might eventually want to use it
     # - !type:SaturationRequirement # MisandryBox - no neon hair on captain
     #   hairColorSaturation: 0.30
-  guides: # goobstation
-  - Command
-  - Succession
-  - StandardProceduresSOP
-  - CaptainSOP
+  # guides: # Orion-Edit: this fork does not ship the upstream SOP entries
+  # - Command
+  # - Succession
+  # - StandardProceduresSOP
+  # - CaptainSOP
   goobcoins: 50 #Goob content
+  salary: 140 # Orion
+  payrollDepartmentAccount: Command # Orion
   weight: 20
   startingGear: CaptainGear
   icon: "JobIconCaptain"
@@ -50,6 +52,13 @@
       - type: CommandStaff
       - type: Condemned # Goobstation - Nanotrasen owns your soul pal.
         soulOwnedNotDevil: true
+      - type: AdditionalLanguage # Orion
+        speaks:
+        - CorporateCodespeak
+        understands:
+        - CorporateCodespeak
+  contracts: # Arcane
+  - DocumentContractEmploymentCommand
 
 - type: startingGear
   id: CaptainGear

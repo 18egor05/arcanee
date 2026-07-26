@@ -285,6 +285,16 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (language.SpeechOverride.ChatTypeOverride is { } chatTypeOverride)
             desiredType = chatTypeOverride;
 
+        // Orion-Start: Route host and cortical-borer speech directly to both minds.
+        var targetEv = new CheckTargetedSpeechEvent();
+        RaiseLocalEvent(source, targetEv);
+        if (targetEv.Targets.Count > 0 && !targetEv.ChatTypeIgnore.Contains(desiredType))
+        {
+            SendEntityDirect(source, message, range, nameOverride, language, targetEv.Targets, hideLog, ignoreActionBlocker);
+            return;
+        }
+        // Orion-End
+
         // This message may have a radio prefix, and should then be whispered to the resolved radio channel
         if (checkRadioPrefix)
         {
@@ -1283,7 +1293,65 @@ public sealed partial class ChatSystem : SharedChatSystem
     }
 
     #endregion
+
+    // Orion-Start
+    private void SendEntityDirect(
+        EntityUid source,
+        string originalMessage,
+        ChatTransmitRange range,
+        string? nameOverride,
+        LanguagePrototype language,
+        List<EntityUid> recipients,
+        bool hideLog = false,
+        bool ignoreActionBlocker = false)
+    {
+        var message = TransformSpeech(source, FormattedMessage.RemoveMarkupOrThrow(originalMessage), language);
+        if (message.Length == 0)
+            return;
+
+        var name = nameOverride;
+        if (name == null)
+        {
+            var nameEv = new TransformSpeakerNameEvent(source, Name(source));
+            RaiseLocalEvent(source, nameEv);
+            name = nameEv.VoiceName;
+        }
+
+        name = FormattedMessage.EscapeText(name);
+        var wrappedMessage = Loc.GetString("chat-manager-entity-say-direct-wrap-message",
+            ("entityName", name),
+            ("message", FormattedMessage.EscapeText(message)));
+
+        foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
+        {
+            if (session.AttachedEntity is not { Valid: true } listener ||
+                MessageRangeCheck(session, data, range) != MessageRangeCheckResult.Full ||
+                !recipients.Contains(listener) && !HasComp<GhostComponent>(listener))
+                continue;
+
+            _chatManager.ChatMessageToOne(
+                ChatChannel.CollectiveMind,
+                message,
+                wrappedMessage,
+                source,
+                false,
+                session.Channel);
+        }
+
+        if (!hideLog)
+            _adminLogger.Add(LogType.Chat, LogImpact.Low,
+                $"Direct message from {ToPrettyString(source):user} as {name}: {originalMessage}.");
+    }
+    // Orion-End
 }
+
+// Orion-Start
+public sealed class CheckTargetedSpeechEvent : EntityEventArgs
+{
+    public readonly List<InGameICChatType> ChatTypeIgnore = [];
+    public readonly List<EntityUid> Targets = [];
+}
+// Orion-End
 
 /// <summary>
 ///     This event is raised before chat messages are sent out to clients. This enables some systems to send the chat

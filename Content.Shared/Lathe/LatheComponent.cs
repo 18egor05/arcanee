@@ -38,12 +38,7 @@ namespace Content.Shared.Lathe
         [DataField]
         public LinkedList<LatheRecipeBatch> Queue = new();
 
-        // Orion-Start
-        [DataField]
-        public Queue<Dictionary<ProtoId<MaterialPrototype>, int>> QueuedMaterialRefunds = new();
-
-        public Dictionary<ProtoId<MaterialPrototype>, int>? ActiveMaterialRefund;
-        // Orion-End
+        public Dictionary<ProtoId<MaterialPrototype>, int>? ActiveMaterialRefund; // Orion
 
         /// <summary>
         /// The sound that plays when the lathe is producing an item, if any
@@ -159,11 +154,20 @@ namespace Content.Shared.Lathe
         public int ItemsPrinted;
         public int ItemsRequested;
 
-        public LatheRecipeBatch(ProtoId<LatheRecipePrototype> recipe, int itemsPrinted, int itemsRequested)
+        // Orion-Edit: Retain the exact per-item cost so upgrades cannot change cancellation refunds.
+        [DataField]
+        public Dictionary<ProtoId<MaterialPrototype>, int> MaterialCost = new();
+
+        public LatheRecipeBatch(
+            ProtoId<LatheRecipePrototype> recipe,
+            int itemsPrinted,
+            int itemsRequested,
+            Dictionary<ProtoId<MaterialPrototype>, int>? materialCost = null)
         {
             Recipe = recipe;
             ItemsPrinted = itemsPrinted;
             ItemsRequested = itemsRequested;
+            MaterialCost = materialCost ?? new();
         }
     }
 

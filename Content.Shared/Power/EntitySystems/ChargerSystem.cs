@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared.Emp;
 using Content.Shared.Examine;
 using Content.Shared.Power.Components;
@@ -32,6 +33,8 @@ public sealed class ChargerSystem : EntitySystem
         SubscribeLocalEvent<ChargerComponent, ContainerIsInsertingAttemptEvent>(OnInsertAttempt);
         SubscribeLocalEvent<ChargerComponent, InsertIntoEntityStorageAttemptEvent>(OnEntityStorageInsertAttempt);
         SubscribeLocalEvent<ChargerComponent, ExaminedEvent>(OnChargerExamine);
+        SubscribeLocalEvent<ChargerComponent, RefreshPartsEvent>(OnPartsRefresh); // Orion
+        SubscribeLocalEvent<ChargerComponent, UpgradeExamineEvent>(OnUpgradeExamine); // Orion
         SubscribeLocalEvent<ChargerComponent, EmpPulseEvent>(OnEmpPulse);
         SubscribeLocalEvent<ChargerComponent, EmpDisabledRemovedEvent>(OnEmpRemoved);
         SubscribeLocalEvent<InsideChargerComponent, RefreshChargeRateEvent>(OnRefreshChargeRate);
@@ -40,8 +43,29 @@ public sealed class ChargerSystem : EntitySystem
 
     private void OnStartup(Entity<ChargerComponent> ent, ref ComponentStartup args)
     {
+        ent.Comp.BaseChargeRate = ent.Comp.ChargeRate; // Orion
         UpdateStatus(ent);
     }
+
+    // Orion-Edit-Start
+    private void OnPartsRefresh(EntityUid uid, ChargerComponent component, RefreshPartsEvent args)
+    {
+        var capTier = args.GetPartRating(component.ChargePart);
+        component.ChargeRate = component.BaseChargeRate *
+            RefreshPartsEvent.GetPositiveTierMultiplier(capTier);
+        Dirty(uid, component);
+        RefreshAllBatteries((uid, component));
+        UpdateStatus((uid, component));
+    }
+
+    private static void OnUpgradeExamine(EntityUid uid, ChargerComponent component, UpgradeExamineEvent args)
+    {
+        var efficiency = component.BaseChargeRate <= 0f
+            ? 1f
+            : component.ChargeRate / component.BaseChargeRate;
+        args.AddPercentageUpgrade("machine-upgrade-charging-efficiency", efficiency);
+    }
+    // Orion-Edit-End
 
     private void OnChargerExamine(EntityUid uid, ChargerComponent component, ExaminedEvent args)
     {

@@ -18,7 +18,7 @@ namespace Content.Server.Connection.Whitelist;
 /// If the condition doesn't match, the next condition is checked.
 /// </summary>
 [Prototype]
-public sealed class PlayerConnectionWhitelistPrototype : IPrototype
+public sealed partial class PlayerConnectionWhitelistPrototype : IPrototype
 {
     [IdDataField]
     public string ID { get; private set; } = default!;

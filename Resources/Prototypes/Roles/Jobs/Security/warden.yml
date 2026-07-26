@@ -26,11 +26,11 @@
   canBeAntag: false
   guides: # goobstation
   - SpaceLaw
-  - LegalSOP
-  - Security
-  - WardenSOP
-  - KravMaga
+  - SOP-Security-Warden # Orion
+  - SOP-Security # Orion
   goobcoins: 35 #Goob content
+  salary: 90 # Orion
+  payrollDepartmentAccount: Security # Orion
   access:
   - Security
   - Brig
@@ -47,6 +47,8 @@
   - !type:AddComponentSpecial # goobstation
     components:
       - type: SecurityStaff
+  contracts: # Arcane
+  - DocumentContractEmploymentSecurity
 
 - type: startingGear
   id: WardenGear

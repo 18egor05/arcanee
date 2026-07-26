@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
+using Content.Shared._Orion.CustomGhost;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Database;
 using Content.Shared.Preferences;
@@ -45,7 +46,12 @@ namespace Content.Server.Database
 
         Task SaveAdminOOCColorAsync(NetUserId userId, Color color);
 
+        Task SaveGhostTypeAsync(NetUserId userId, ProtoId<CustomGhostPrototype> ghostProto); // Orion
+
         Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites);
+
+        Task<string?> GetErpOrganPreferencesAsync(NetUserId userId, int slot); // Arcane
+        Task SaveErpOrganPreferencesAsync(NetUserId userId, int slot, string data); // Arcane
 
         // Single method for two operations for transaction.
         Task DeleteSlotAndSetSelectedIndex(NetUserId userId, int deleteSlot, int newSlot);
@@ -312,6 +318,10 @@ namespace Content.Server.Database
 
         Task<bool> HasLinkedAccount(Guid player, CancellationToken cancel);
 
+        Task<(bool Linked, bool HasPlayerRole)> GetLinkedAccountStatus(Guid player, CancellationToken cancel);
+
+        Task<bool> UnlinkDiscordAccount(Guid player, CancellationToken cancel);
+
         Task<RMCPatron?> GetPatron(Guid player, CancellationToken cancel);
 
         Task<List<RMCPatron>> GetAllPatrons();
@@ -520,10 +530,28 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.SaveAdminOOCColorAsync(userId, color));
         }
 
+        public Task SaveGhostTypeAsync(NetUserId userId, ProtoId<CustomGhostPrototype> ghostProto)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SaveGhostTypeAsync(userId, ghostProto));
+        }
+
         public Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites)
         {
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.SaveConstructionFavoritesAsync(userId, constructionFavorites));
+        }
+
+        public Task<string?> GetErpOrganPreferencesAsync(NetUserId userId, int slot)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetErpOrganPreferencesAsync(userId, slot));
+        }
+
+        public Task SaveErpOrganPreferencesAsync(NetUserId userId, int slot, string data)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SaveErpOrganPreferencesAsync(userId, slot, data));
         }
 
         public Task<PlayerPreferences?> GetPlayerPreferencesAsync(NetUserId userId, CancellationToken cancel)
@@ -1063,6 +1091,18 @@ namespace Content.Server.Database
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.HasLinkedAccount(player, cancel));
+        }
+
+        public Task<(bool Linked, bool HasPlayerRole)> GetLinkedAccountStatus(Guid player, CancellationToken cancel)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetLinkedAccountStatus(player, cancel));
+        }
+
+        public Task<bool> UnlinkDiscordAccount(Guid player, CancellationToken cancel)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.UnlinkDiscordAccount(player, cancel));
         }
 
         public Task<RMCPatron?> GetPatron(Guid player, CancellationToken cancel)

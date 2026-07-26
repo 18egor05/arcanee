@@ -1,5 +1,7 @@
+using Content.Shared._Orion.Construction.Prototypes;
 using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Power.Components;
@@ -12,6 +14,14 @@ public sealed partial class ChargerComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float ChargeRate = 20.0f;
+
+    // Orion-Edit-Start
+    [ViewVariables(VVAccess.ReadWrite)]
+    public float BaseChargeRate;
+
+    [DataField]
+    public ProtoId<MachinePartPrototype> ChargePart = "Capacitor";
+    // Orion-Edit-End
 
     /// <summary>
     /// Passive draw when no power cell is inserted, in watts.

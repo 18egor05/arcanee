@@ -82,7 +82,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
                 : !pair.Value.IsCommandTracker)
             .Select(pair => pair.Value)
             .ToList();
-        _uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(filteredSensors));
+        _uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(filteredSensors, component.IsEmagged));
         // GoobStation - End
         //var allSensors = component.ConnectedSensors.Values.ToList();
         //_uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(allSensors));

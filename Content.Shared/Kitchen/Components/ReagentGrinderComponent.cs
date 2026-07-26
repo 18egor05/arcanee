@@ -1,6 +1,8 @@
 using Content.Shared.Kitchen.EntitySystems;
+using Content.Shared._Orion.Construction.Prototypes;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Kitchen.Components;
 
@@ -22,6 +24,20 @@ public sealed partial class ReagentGrinderComponent : Component
 
     [DataField, AutoNetworkedField]
     public float WorkTimeMultiplier = 1;
+
+    // Orion-Edit-Start
+    [ViewVariables(VVAccess.ReadWrite)]
+    public float BaseWorkTimeMultiplier = 1;
+
+    [ViewVariables(VVAccess.ReadWrite)]
+    public int BaseStorageMaxEntities = 6;
+
+    [DataField]
+    public ProtoId<MachinePartPrototype> ServoPart = "Servo";
+
+    [DataField]
+    public ProtoId<MachinePartPrototype> MatterBinPart = "MatterBin";
+    // Orion-Edit-End
 
     [DataField]
     public SoundSpecifier ClickSound { get; set; } = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");

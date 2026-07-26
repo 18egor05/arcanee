@@ -150,11 +150,7 @@ public sealed partial class AtmosphereSystem
                 }
             }
         }
-        else
-        {
-            // Little baby fire. Set the sprite state based on the current size of the fire.
-            tile.Hotspot.State = (byte)(tile.Hotspot.Volume > Atmospherics.CellVolume * 0.4f ? 2 : 1);
-        }
+        // Orion-Edit: The extended temperature-based states are set in PerformHotspotExposure.
 
         if (tile.Hotspot.Temperature > tile.MaxFireTemperatureSustained)
             tile.MaxFireTemperatureSustained = tile.Hotspot.Temperature;
@@ -256,6 +252,19 @@ public sealed partial class AtmosphereSystem
     {
         if (tile.Air == null || !tile.Hotspot.Valid)
             return;
+
+        // Orion-Start
+        tile.Hotspot.State = tile.Hotspot.Temperature switch
+        {
+            <= 390.15f => 1,
+            <= 475.15f => 2,
+            <= 570.15f => 3,
+            <= 1000.15f => 4,
+            <= 5000.15f => 5,
+            <= 10000.15f => 6,
+            _ => 7,
+        };
+        // Orion-End
 
         // Determine if the tile has become a full-blown fire if the volume of the fire has effectively reached
         // the volume of the tile's air.

@@ -22,12 +22,14 @@
   supervisors: job-supervisors-captain
   #canBeAntag: false
   antagAdvantage: 75 # Goobstation
-  guides: # goobstation
-  - Science
-  - Command
-  - ResearchDirectorSOP
-  - ScienceSOP
+  # guides: # Orion-Edit: this fork does not ship the upstream SOP entries
+  # - Science
+  # - Command
+  # - ResearchDirectorSOP
+  # - ScienceSOP
   goobcoins: 40 #Goob content
+  salary: 120 # Orion
+  payrollDepartmentAccount: Command # Orion
   access:
   - Research
   - Command
@@ -42,6 +44,8 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+  contracts: # Arcane
+  - DocumentContractEmploymentCommand
 
 - type: startingGear
   id: ResearchDirectorGear

@@ -5,7 +5,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.Speech.Prototypes;
 
 [Prototype("accent")]
-public sealed class ReplacementAccentPrototype : IPrototype
+public sealed partial class ReplacementAccentPrototype : IPrototype
 {
     /// <inheritdoc/>
     [ViewVariables]

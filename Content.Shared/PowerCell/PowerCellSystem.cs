@@ -64,6 +64,7 @@ public sealed partial class PowerCellSystem : EntitySystem
         if (_timing.ApplyingState)
             return; // The change in appearance data is already networked separately.
 
+        _appearance.SetData(ent.Owner, PowerCellSlotVisuals.Enabled, true);
 
         var ev = new PowerCellChangedEvent(false);
         RaiseLocalEvent(ent, ref ev);
@@ -91,6 +92,8 @@ public sealed partial class PowerCellSystem : EntitySystem
         if (_timing.ApplyingState)
             return; // The change in appearance data is already networked separately.
 
+        _appearance.SetData(ent.Owner, PowerCellSlotVisuals.Enabled, false);
+
         var ev = new PowerCellChangedEvent(true);
         RaiseLocalEvent(ent, ref ev);
 
@@ -111,6 +114,8 @@ public sealed partial class PowerCellSystem : EntitySystem
 
     private void OnCellSlotStateChanged(Entity<PowerCellSlotComponent> ent, ref BatteryStateChangedEvent args)
     {
+        _appearance.SetData(ent.Owner, PowerCellSlotVisuals.Enabled, args.NewState != BatteryState.Empty);
+
         if (args.NewState != BatteryState.Empty)
             return;
 

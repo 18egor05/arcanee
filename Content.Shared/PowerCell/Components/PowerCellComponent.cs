@@ -2,6 +2,7 @@
 
 using Content.Shared.Power.Components;
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.PowerCell.Components;
 
@@ -11,3 +12,9 @@ namespace Content.Shared.PowerCell.Components;
 /// </summary>
 [RegisterComponent, NetworkedComponent]
 public sealed partial class PowerCellComponent : Component;
+
+[Serializable, NetSerializable]
+public enum PowerCellSlotVisuals : byte
+{
+    Enabled
+}

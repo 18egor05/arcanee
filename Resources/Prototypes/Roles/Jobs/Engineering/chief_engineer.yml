@@ -25,13 +25,15 @@
   supervisors: job-supervisors-captain
   #canBeAntag: false
   antagAdvantage: 75 # Goobstation
-  guides: # goobstation
-  - Engineering
-  - ChiefEngineerSOP
-  - EngineeringSOP
-  - Command
-  - EmergenciesSOP
+  # guides: # Orion-Edit: this fork does not ship the upstream SOP entries
+  # - Engineering
+  # - ChiefEngineerSOP
+  # - EngineeringSOP
+  # - Command
+  # - EmergenciesSOP
   goobcoins: 40 #Goob content
+  salary: 120 # Orion
+  payrollDepartmentAccount: Command # Orion
   access:
   - Maintenance
   - Engineering
@@ -48,6 +50,8 @@
     components:
       - type: CommandStaff
       - type: EngineeringStaff # Goobstation
+  contracts: # Arcane
+  - DocumentContractEmploymentCommand
 
 - type: startingGear
   id: ChiefEngineerGear

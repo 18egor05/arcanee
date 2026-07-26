@@ -1,7 +1,7 @@
 {
-  "version": 1,
-  "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/d917f4c2a088419d5c3aec7656b7ff8cebd1822e idcluwne made by brainfood1183 (github) for ss14, idbrigmedic made by PuroSlavKing (Github), pirate made by brainfood1183 (github), idadmin made by Arimah (github), idvisitor by IProduceWidgets (Github), idintern-service by spanky-spanky (Github), Chemist made by Lehmin for Goobstation, idpartymaker idsecurityclown idcommandmaid by lzk228 (github), idradiohost made by john john (github) | idmime and idmusician recolor by DinnerCalzone (github) at https://github.com/impstation/imp-station-14/commit/233161f02bab7f9f9c03f09f39638ea7c200ee24  | service icons darkened by frobnic8 (Discord and Github), wizard and idwizard by ScarKy0 | idboxer and idlawyer recoloured by K-Dynamic (github) | idquartermaster modified by K-Dynamic (github) | idmime and idmusician recolor by DinnerCalzone (github) at https://github.com/impstation/imp-station-14/commit/233161f02bab7f9f9c03f09f39638ea7c200ee24, syndiop/agent/commander made by Archee1 (Github)",
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/d917f4c2a088419d5c3aec7656b7ff8cebd1822e idcluwne made by brainfood1183 (github) for ss14, idbrigmedic made by PuroSlavKing (Github), pirate made by brainfood1183 (github), idadmin made by Arimah (github), idvisitor by IProduceWidgets (Github), idintern-service by spanky-spanky (Github), Chemist made by Lehmin for Goobstation, idpartymaker idsecurityclown idcommandmaid by lzk228 (github), idradiohost made by john john (github) | idmime and idmusician recolor by DinnerCalzone (github) at https://github.com/impstation/imp-station-14/commit/233161f02bab7f9f9c03f09f39638ea7c200ee24  | service icons darkened by frobnic8 (Discord and Github), wizard and idwizard by ScarKy0 | idboxer and idlawyer recoloured by K-Dynamic (github) | idquartermaster modified by K-Dynamic (github) | idmime and idmusician recolor by DinnerCalzone (github) at https://github.com/impstation/imp-station-14/commit/233161f02bab7f9f9c03f09f39638ea7c200ee24, syndiop/agent/commander made by Archee1 (Github) | Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/d917f4c2a088419d5c3aec7656b7ff8cebd1822e idcluwne made by brainfood1183 (github) for ss14, idbrigmedic made by PuroSlavKing (Github), pirate made by brainfood1183 (github), idadmin made by Arimah (github), idvisitor by IProduceWidgets (Github), idintern-service by spanky-spanky (Github), Chemist made by Lehmin for Goobstation, idpartymaker idsecurityclown idcommandmaid by lzk228 (github), idradiohost made by john john (github) | idadjutant made by gardsnake (Discord, GitHub) for Arcane Station SS14 | ert_commaid, idcommaid, pink-inhand-left, pink-inhand-right Made by Bulbo44kkey for Arcane Station SS14 | FourHybra drew idiaa and made a change of idlawyer for Arcane Station SS14",
     "size": {
         "x": 32,
         "y": 32
@@ -226,7 +226,7 @@
         {
             "name": "silver"
         },
-                {
+        {
             "name": "syndie"
         },
         {
@@ -308,6 +308,26 @@
         },
         {
             "name": "green-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "idadjutant"
+        },
+        {
+            "name": "ert_commaid"
+        },
+        {
+            "name": "idcommaid"
+        },
+        {
+            "name": "idiaa"
+        },
+        {
+            "name": "pink-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "pink-inhand-left",
             "directions": 4
         }
     ]

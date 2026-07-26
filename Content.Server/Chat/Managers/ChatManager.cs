@@ -24,7 +24,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
 using Content.Shared.Damage;
-using Microsoft.CodeAnalysis.Elfie.Serialization;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Server._Arcane.Discord;
 

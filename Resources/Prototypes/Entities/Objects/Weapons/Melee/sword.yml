@@ -151,6 +151,9 @@
     - Back
     - Belt
   - type: DisarmMalus
+  - type: Tag # Orion
+    tags:
+    - Katana
 
 - type: entity
   name: energy katana

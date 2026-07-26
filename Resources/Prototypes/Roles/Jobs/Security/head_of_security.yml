@@ -27,15 +27,14 @@
   icon: "JobIconHeadOfSecurity"
   supervisors: job-supervisors-captain
   canBeAntag: false
-  guides: # goobstation
-  - Security
+  guides:
   - SpaceLaw
-  - LegalSOP
-  - Command
-  - HeadOfSecuritySOP
-  - SecuritySOP
-  - AlertLevels
+  - SOP-Security-HeadOfSecurity # Orion
+  - SOP-Security # Orion
+  - SOP-Alerts # Orion
   goobcoins: 45 #Goob content
+  salary: 120 # Orion
+  payrollDepartmentAccount: Command # Orion
   access:
   - HeadOfSecurity
   - Command
@@ -55,6 +54,8 @@
     components:
       - type: CommandStaff
       - type: SecurityStaff # goobstation
+  contracts: # Arcane
+  - DocumentContractEmploymentCommand
 
 - type: startingGear
   id: HoSGear

@@ -82,7 +82,7 @@ public class NoiseChannelConfig
 }
 
 [Prototype]
-public sealed class NoiseChannelPrototype : NoiseChannelConfig, IPrototype, IInheritingPrototype
+public sealed partial class NoiseChannelPrototype : NoiseChannelConfig, IPrototype, IInheritingPrototype
 {
     /// <inheritdoc />
     [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<NoiseChannelPrototype>))]

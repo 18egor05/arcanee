@@ -11,6 +11,13 @@ namespace Content.Server.Ghost.Roles.Components;
 [Access(typeof(GhostRoleSystem))]
 public sealed partial class GhostRoleComponent : Component
 {
+    /// <summary>
+    /// Additional requirements attached directly to this ghost role.
+    /// Kept for roles that do not have a suitable job or antagonist prototype.
+    /// </summary>
+    [DataField]
+    public HashSet<JobRequirement>? Requirements;
+
     [DataField("name")] private string _roleName = "Unknown";
 
     [DataField("description")] private string _roleDescription = "Unknown";

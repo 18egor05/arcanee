@@ -25,12 +25,14 @@
   supervisors: job-supervisors-captain
   #canBeAntag: false
   antagAdvantage: 75 # Goobstation
-  guides: # goobstation
-  - Cargo
-  - QuartermasterSOP
-  - CargoSOP
-  - Command
+  # guides: # Orion-Edit: this fork does not ship the upstream SOP entries
+  # - Cargo
+  # - QuartermasterSOP
+  # - CargoSOP
+  # - Command
   goobcoins: 40 #Goob content
+  salary: 100 # Orion
+  payrollDepartmentAccount: Command # Orion
   access:
   - Cargo
   - Salvage
@@ -48,6 +50,8 @@
     components:
       - type: CommandStaff
       - type: QuartermasterTraining
+  contracts: # Arcane
+  - DocumentContractEmploymentCommand
 
 - type: startingGear
   id: QuartermasterGear

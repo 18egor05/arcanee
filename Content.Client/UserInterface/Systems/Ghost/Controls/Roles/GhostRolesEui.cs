@@ -93,12 +93,20 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls.Roles
             var requirementsManager = IoCManager.Resolve<JobRequirementsManager>();
 
             // Grouping roles
-            var groupedRoles = ghostState.GhostRoles.GroupBy(role => (
-                    role.Name,
-                    role.Description,
-                    //  Check the prototypes for role requirements and bans
-                    requirementsManager.IsAllowed(role.RolePrototypes.Item1, role.RolePrototypes.Item2, null, out var reason),
-                    reason));
+            var groupedRoles = ghostState.GhostRoles.GroupBy(role =>
+            {
+                // Check both linked role prototypes and requirements declared directly on the entity.
+                var allowed = requirementsManager.IsAllowed(
+                    role.RolePrototypes.Item1,
+                    role.RolePrototypes.Item2,
+                    null,
+                    out var reason);
+
+                if (allowed)
+                    allowed = requirementsManager.IsAllowed(role.Requirements, null, out reason);
+
+                return (role.Name, role.Description, allowed, reason);
+            });
 
             // Add a new entry for each role group
             foreach (var group in groupedRoles)
