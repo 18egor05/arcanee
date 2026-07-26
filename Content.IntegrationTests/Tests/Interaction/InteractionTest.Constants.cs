@@ -1,10 +1,7 @@
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Shared.Stacks;
+using Robust.Shared.Prototypes;
 
 namespace Content.IntegrationTests.Tests.Interaction;
 
@@ -16,7 +13,9 @@ public abstract partial class InteractionTest
     protected const string Floor = "FloorSteel";
     protected const string FloorItem = "FloorTileItemSteel";
     protected const string Plating = "Plating";
+    protected const string PlatingRCD = "PlatingRCD";
     protected const string Lattice = "Lattice";
+    protected const string PlatingBrass = "PlatingBrass";
 
     // Structures
     protected const string Airlock = "Airlock";
@@ -27,10 +26,6 @@ public abstract partial class InteractionTest
     protected const string Weld = "WelderExperimental";
     protected const string Pry = "Crowbar";
     protected const string Cut = "Wirecutter";
-    // Orion-Start
-    protected const string RapidPartExchanger = "RapidPartExchanger";
-    protected const string BluespaceRapidPartExchanger = "BluespaceRapidPartExchanger";
-    // Orion-End
 
     // Materials/stacks
     protected const string Steel = "Steel";
@@ -41,19 +36,12 @@ public abstract partial class InteractionTest
     protected const string Rod = "MetalRod";
 
     // Parts
-    protected const string Servo1 = "MicroServoStockPart"; // Orion-Edit
-    // Orion-Start
-    protected const string Servo2 = "NanoServoStockPart";
-    protected const string Servo3 = "PicoServoStockPart";
-    protected const string Servo4 = "FemtoServoStockPart";
-    protected const string MatterBin1 = "MatterBinStockPart";
-    protected const string MatterBin2 = "AdvancedMatterBinStockPart";
-    protected const string MatterBin3 = "SuperMatterBinStockPart";
-    protected const string MatterBin4 = "BluespaceMatterBinStockPart";
-    protected const string Capacitor1 = "CapacitorStockPart";
-    protected const string ScanningModule1 = "ScanningModuleStockPart";
-    protected const string MicroLaser1 = "MicroLaserStockPart";
-    // Orion-End
+    protected const string Manipulator1 = "MicroManipulatorStockPart";
     protected const string Battery1 = "PowerCellSmall";
     protected const string Battery4 = "PowerCellHyper";
+
+    // Inflatables & Needle used to pop them
+    protected static readonly EntProtoId InflatableWall = "InflatableWall";
+    protected static readonly EntProtoId Needle = "WeaponMeleeNeedle";
+    protected static readonly ProtoId<StackPrototype> InflatableWallStack = "InflatableWall";
 }
