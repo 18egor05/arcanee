@@ -19,18 +19,6 @@
   - Socks
   - Wrists
   # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
   - CaptainJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -53,18 +41,6 @@
   - Survival
   - Trinkets
   - Patron # Arcane
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
   # Orion-Start
   - Undershirt
   - Underwear
@@ -112,18 +88,6 @@
   - Socks
   - Wrists
   # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
   - PassengerJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -150,18 +114,6 @@
   - Socks
   - Wrists
   # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
   - BartenderJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -180,18 +132,6 @@
   - Survival
   - Trinkets
   - Patron # Arcane
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
   # Orion-Start
   - Undershirt
   - Underwear
@@ -225,18 +165,6 @@
   - Socks
   - Wrists
   # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
   - ChefJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -255,18 +183,6 @@
   - Survival
   - Trinkets
   - Patron # Arcane
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
   # Orion-Start
   - Undershirt
   - Underwear
@@ -292,18 +208,6 @@
   - Survival
   - Trinkets
   - Patron # Arcane
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
   # Orion-Start
   - Undershirt
   - Underwear
@@ -339,18 +243,6 @@
   - Socks
   - Wrists
   # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
   - ChaplainJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -378,18 +270,6 @@
   - Socks
   - Wrists
   # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
   - JanitorJobTrinkets
   - Animals # Goobstation?
   - GroupSpeciesBreathTool
@@ -410,18 +290,6 @@
   - Survival
   - Trinkets
   - Patron # Arcane
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
   # Orion-Start
   - Undershirt
   - Underwear
@@ -456,18 +324,6 @@
   - Socks
   - Wrists
   # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
-  # Orion-Start
-  - Undershirt
-  - Underwear
-  - Socks
-  - Wrists
-  # Orion-End
   - ClownJobTrinkets
   - Animals # Goobstation
   # Goobstation - EE Plasmeme Change.
@@ -492,6 +348,12 @@
   - SurvivalMime
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - MimeJobTrinkets
   - Animals # Goobstation
   # Goobstation - EE Plasmeme Change.
@@ -512,6 +374,12 @@
   - Survival
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - MusicianJobTrinkets
   - Instruments
   - Animals
@@ -537,6 +405,12 @@
   - Survival
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - QuartermasterJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -559,6 +433,12 @@
   - Survival
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - CargoTechnicianJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -580,6 +460,12 @@
   - Survival
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - SalvageSpecialistJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -602,6 +488,12 @@
   - SurvivalExtended
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - ChiefEngineerJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -619,6 +511,12 @@
   - SurvivalExtended
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - TechnicalAssistantJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -640,6 +538,12 @@
   - SurvivalExtended
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - StationEngineerJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -660,6 +564,12 @@
   - SurvivalExtended
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - AtmosphericTechnicianJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -684,6 +594,12 @@
   - Survival
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - ResearchDirectorJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -708,6 +624,12 @@
   - Survival
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - ScientistJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -726,6 +648,12 @@
   - Survival
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - ResearchAssistantJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -751,6 +679,12 @@
   - SurvivalSecurity
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - SecurityStar # Orion
   - HeadofSecurityJobTrinkets
   - Animals # Goobstation
@@ -777,6 +711,12 @@
   - SurvivalSecurity
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - SecurityStar # Orion
   - WardenJobTrinkets
   - Animals # Goobstation
@@ -803,6 +743,12 @@
   - SurvivalSecurity
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - SecurityStar # Orion
   - SecurityJobTrinkets
   - Animals # Goobstation
@@ -824,6 +770,12 @@
   - SurvivalSecurity
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - SecurityStar # Orion
   - DetectiveJobTrinkets
   - Animals # Goobstation
@@ -845,6 +797,12 @@
   - SecurityOuterClothing # Goobstation - Why not.
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - SecurityCadetJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathToolSecurity
@@ -870,6 +828,12 @@
   - SurvivalMedical
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - ChiefMedicalOfficerJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathToolMedical
@@ -894,6 +858,12 @@
   - SurvivalMedical
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - MedicalDoctorJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathToolMedical
@@ -912,6 +882,12 @@
   - SurvivalMedical
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - MedicalInternJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathToolMedical
@@ -934,6 +910,12 @@
   - SurvivalMedical
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - ChemistJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathToolMedical
@@ -957,6 +939,12 @@
   - SurvivalMedical
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - ParamedicJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathToolMedical
@@ -977,6 +965,12 @@
   - Survival
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - ReporterJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
@@ -995,6 +989,12 @@
   - Survival
   - Trinkets
   - Patron # Arcane
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
   - PsychologistJobTrinkets
   - Animals # Goobstation
   - GroupSpeciesBreathTool
