@@ -8,15 +8,19 @@
     },
     "states": [
         {
-            "name": "predalien_legs",
+            "name": "chris_claws_left",
             "directions": 4
         },
         {
-            "name": "muscles_legs",
+            "name": "chris_claws_right",
             "directions": 4
         },
         {
-            "name": "cougar_legs",
+            "name": "razor_feet_left",
+            "directions": 4
+        },
+        {
+            "name": "razor_feet_right",
             "directions": 4
         }
     ]
