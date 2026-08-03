@@ -420,6 +420,7 @@
     - map: [ "eyes" ]
     - map: [ "id" ]
     - map: [ "outerClothing" ]
+    - map: [ "enum.HumanoidVisualLayers.TailBehindBackpack" ] # Arcane
     - map: [ "belt" ] #Goobedit - Belts over outerwear
     - map: [ "back" ]
     - map: [ "enum.HumanoidVisualLayers.TailOversuit" ]

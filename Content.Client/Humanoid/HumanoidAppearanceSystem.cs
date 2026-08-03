@@ -427,13 +427,16 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
 
             var layerSlot = markingPrototype.BodyPart;
             // first, try to see if there are any custom layers for this marking
-            if (markingPrototype.Layering != null)
+            if (markingPrototype.Layering != null && markingPrototype.Layering.TryGetValue(rsi.RsiState, out var layerName)) // Arcane-Edit: Bugfix
             {
-                var name = rsi.RsiState;
-                if (markingPrototype.Layering.TryGetValue(name, out var layerName))
+                // Arcane-Edit-Start
+                if (!Enum.TryParse<HumanoidVisualLayers>(layerName, out var parsedLayer))
                 {
-                    layerSlot = Enum.Parse<HumanoidVisualLayers>(layerName);
+                    Log.Error($"Marking {markingPrototype.ID} references unknown visual layer {layerName}");
+                    continue;
                 }
+                // Arcane-Edit-End
+                layerSlot = parsedLayer; // Arcane
             }
             // update the layerDict
             // if it doesnt have this, add it at 0, otherwise increment it
