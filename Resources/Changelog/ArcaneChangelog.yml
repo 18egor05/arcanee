@@ -7,3 +7,11 @@ Entries:
       message: Да да приколы
   id: 1
   time: '2026-08-05T12:43:13.0000000+00:00'
+- author: Vecortys
+  changes:
+    - type: Remove
+      message: 'Стандартный бокс был убран из маппула, остался только Wonder. '
+    - type: Tweak
+      message: Ротация карт была ужесточена.
+  id: 2
+  time: '2026-08-06T11:33:58.0000000+00:00'
