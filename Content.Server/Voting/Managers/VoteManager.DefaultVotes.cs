@@ -297,7 +297,7 @@ namespace Content.Server.Voting.Managers
             foreach (var (k, v) in maps)
             {
                 // Arcane-start
-                if (_mapStory.Count(el => el == v) >= MapAvailableCount)
+                if (_mapStory.Count(el => el == k.ID) >= MapAvailableCount)
                     continue;
                 // Arcane-end
                 options.Options.Add((v, k));
