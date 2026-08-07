@@ -42,3 +42,15 @@ Entries:
       message: Уровень хаоса в динамиках был повышен.
   id: 5
   time: '2026-08-07T11:49:35.0000000+00:00'
+- author: ReWAFFlution
+  changes:
+    - type: Fix
+      message: ТТС теперь снова работает по радио частоте
+    - type: Tweak
+      message: У ИИ появился ТТС
+    - type: Tweak
+      message: Голопад теперь передает ТТС
+    - type: Fix
+      message: КПБ вернулся голос
+  id: 6
+  time: '2026-08-07T12:39:47.0000000+00:00'
