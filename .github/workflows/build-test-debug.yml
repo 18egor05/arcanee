@@ -21,7 +21,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
 
-    runs-on: [self-hosted, linux, x64, arcane-publish]
+    runs-on: ${{ matrix.os }}
 
     steps:
     - name: Checkout Master

@@ -36,7 +36,7 @@ jobs:
   build:
     name: Test Packaging
     if: github.actor != 'PJBot' && github.event.pull_request.draft == false
-    runs-on: [self-hosted, linux, x64, arcane-publish]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Master
