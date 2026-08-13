@@ -68,7 +68,7 @@
   productEntity: ReinforcementRadioSyndicateCyborgSaboteur
   icon: { sprite: _Trauma/Mobs/Silicon/synd_engi.rsi, state: icon }
   cost:
-    Telecrystal: 300
+    Telecrystal: 180 # Arcane-Edit: 300 > 180
   categories:
   - UplinkAllies
   conditions:
