@@ -55,22 +55,28 @@
   - type: EmitSoundOnUse
     sound: /Audio/Animals/snake_hiss.ogg
 
+# Arcane-Edit-Start: Replaced from Orion
 - type: entity
   parent: ReinforcementRadio
-  id: ReinforcementRadioSyndicateCyborgSaboteur
+  id: ReinforcementRadioSyndicateCyborgSaboteur # Reinforcement radio exclusive to nukeops uplink
   name: syndicate saboteur cyborg reinforcement radio
-  description: Calls in a saboteur borg with light weaponry and disruptive gear.
+  description: Call in a well armed saboteur borg with light weaponry and disruptive gear, instantly!
+  suffix: NukeOps
   components:
-  - type: GhostRole
-    name: ghost-role-information-syndicate-cyborg-saboteur-name
-    description: ghost-role-information-syndicate-cyborg-description
-    rules: ghost-role-information-silicon-rules
-    mindRoles:
-    - MindRoleGhostRoleSilicon
-    raffle:
-      settings: default
-  - type: GhostRoleMobSpawner
-    prototype: PlayerBorgSyndicateSaboteurBattery
+    - type: GhostRole
+      name: ghost-role-information-syndicate-cyborg-saboteur-name
+      description: ghost-role-information-syndicate-cyborg-description
+      rules: ghost-role-information-silicon-rules
+      mindRoles:
+      - MindRoleGhostRoleSilicon
+      raffle:
+        settings: default
+      requirements:
+      - !type:OverallPlaytimeRequirement
+        time: 18000
+    - type: GhostRoleMobSpawner
+      prototype: PlayerBorgSyndicateSaboteurBattery
+# Arcane-Edit-End
 
 - type: entity
   parent: ReinforcementRadio
