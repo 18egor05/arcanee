@@ -25,6 +25,7 @@
     color: "#b211b2"
   - type: LitOnPowered
   - type: ResearchServer
+  - type: PeriodicAnomalySpawner # Arcane
   - type: ResearchServerControlStatus # Orion
   - type: TechnologyDatabase
     supportedDisciplines:
