@@ -187,6 +187,7 @@ public sealed partial class ResearchSystem
         if (!Resolve(client, ref clientComponent, false) || !Resolve(server, ref serverComponent, false))
             return;
 
+        // Orion-Start
         // Arcane-start
         if (Transform(client).GridUid is not { } clientGrid || Transform(server).GridUid != clientGrid)
             return;
