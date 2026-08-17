@@ -91,6 +91,7 @@
   - type: ActionGrant
     actions:
     - ActionViewLaws
+    - ActionTTSVoiceChange # Arcane
   - type: EmagSiliconLaw
     stunTime: 5
   - type: SiliconLawProvider
@@ -287,6 +288,7 @@
     - Tradeband
     - Schechi
     - NewKinPidgin
+    - Hydraspeak # Arcane
     understands:
     - TauCetiBasic
     - Canilunzt
@@ -307,6 +309,7 @@
     - Sign
     - Schechi
     - NewKinPidgin
+    - Hydraspeak # Arcane
   - type: ProtectedFromStepTriggers
   - type: DamageOnInteractProtection
     damageProtection:
