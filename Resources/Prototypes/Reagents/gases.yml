@@ -439,6 +439,7 @@
           - Slime
           - Cybernetic # Shitmed - Cybernetic Organs
           - Hydrakin # Bro
+          - Shadowkin
       # Converts Nitrogen into Ammonia
       - !type:ModifyLungGas
         conditions:
