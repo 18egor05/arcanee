@@ -236,7 +236,7 @@ public sealed class XenomorphsRuleSystem : GameRuleSystem<XenomorphsRuleComponen
             var allQueens = GetXenomorphs(component, "Queen");
             if (allQueens.Count > 0)
             {
-                component.AnnouncementTime ??= _timing.CurTime + _random.Next(component.MinTimeToAnnouncement, component.MaxTimeToAnnouncement);
+                // component.AnnouncementTime ??= _timing.CurTime + _random.Next(component.MinTimeToAnnouncement, component.MaxTimeToAnnouncement); // Arcane-Edit: removed announcement, music
             }
         }
         component.NextCheck = _timing.CurTime + component.CheckDelay;

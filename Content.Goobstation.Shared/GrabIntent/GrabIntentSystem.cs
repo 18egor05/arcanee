@@ -24,6 +24,7 @@ using Content.Shared.Popups;
 using Content.Shared.Speech;
 using Content.Shared.Standing;
 using Content.Shared.Throwing;
+using Content.Shared.Weapons.Melee;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Components;
@@ -174,7 +175,7 @@ public sealed partial class GrabIntentSystem : EntitySystem
         _audio.PlayPredicted(ent.Comp2.GrabSoundEffect, pulling, ent.Owner);
         ent.Comp2.NextStageChange = _timing.CurTime.Add(TimeSpan.FromSeconds(3f));
         Dirty(ent.Owner, ent.Comp2);
-    }
 
-    #endregion
+        #endregion
+    }
 }

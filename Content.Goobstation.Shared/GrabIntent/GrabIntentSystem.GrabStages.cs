@@ -123,7 +123,11 @@ public sealed partial class GrabIntentSystem
         Entity<PullableComponent, GrabbableComponent> pullable,
         GrabStage stage,
         float escapeAttemptModifier = 1f)
-    {
+    { // Arcane-Start: 3 sec cooldown for hardgrab after throw
+        if (stage > GrabStage.Soft && _timing.CurTime < puller.Comp2.NextStageChange)
+        {
+            stage = GrabStage.Soft;
+        } // Arcane-End
         puller.Comp2.GrabStage = stage;
         pullable.Comp2.GrabStage = stage;
         pullable.Comp2.EscapeAttemptModifier *= escapeAttemptModifier;
