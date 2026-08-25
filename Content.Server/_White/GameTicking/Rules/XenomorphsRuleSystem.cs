@@ -236,7 +236,7 @@ public sealed class XenomorphsRuleSystem : GameRuleSystem<XenomorphsRuleComponen
             var allQueens = GetXenomorphs(component, "Queen");
             if (allQueens.Count > 0)
             {
-                // component.AnnouncementTime ??= _timing.CurTime + _random.Next(component.MinTimeToAnnouncement, component.MaxTimeToAnnouncement); // Arcane-Edit: removed announcement, music
+                 component.AnnouncementTime ??= _timing.CurTime + _random.Next(component.MinTimeToAnnouncement, component.MaxTimeToAnnouncement);
             }
         }
         component.NextCheck = _timing.CurTime + component.CheckDelay;
@@ -245,10 +245,10 @@ public sealed class XenomorphsRuleSystem : GameRuleSystem<XenomorphsRuleComponen
         {
             component.Announced = true;
 
-            if (!string.IsNullOrEmpty(component.Announcement))
-                _chat.DispatchGlobalAnnouncement(Loc.GetString(component.Announcement), component.Sender != null ? Loc.GetString(component.Sender) : null, colorOverride: component.AnnouncementColor);
+          //  if (!string.IsNullOrEmpty(component.Announcement) // Arcane-Start: Removed xeno announcement and music
+        // _chat.DispatchGlobalAnnouncement(Loc.GetString(component.Announcement), component.Sender != null ? Loc.GetString(component.Sender) : null, colorOverride: component.AnnouncementColor); //
 
-            _audioSystem.PlayGlobal(component.XenomorphInfestationSound, Filter.Broadcast(), true); // Goobstation - Play music on announcement
+            // _audioSystem.PlayGlobal(component.XenomorphInfestationSound, Filter.Broadcast(), true); // Arcane-End
         }
 
         CheckRoundEnd(uid, component, gameRule);
