@@ -9,7 +9,7 @@
 
 - type: bark
   id: MothSqueak
-  name: Moth Squeak
+  name: bark-name-moth-squeak # Arcane-Edit: Localization
   soundCollection:
     collection: MothSqueakBark
   speciesWhitelist:
