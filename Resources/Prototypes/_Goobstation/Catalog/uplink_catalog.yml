@@ -1011,7 +1011,7 @@
   icon: { sprite: /Textures/_Goobstation/Clothing/Hands/Gloves/kravgloves.rsi, state: icon }
   productEntity: KravMagaImplanter
   cost:
-    Telecrystal: 40
+    Telecrystal: 35 # Arcane-Edit: 40 > 35
   categories:
     - UplinkImplants
 

@@ -90,7 +90,7 @@
   - type: Gun
     fireRate: 2
   - type: GunSpreadModifier
-    spread: 0.6
+    spread: 0.7 # Arcane-Edit: 0.6 > 0.7
   - type: Tag
     tags:
     - WeaponShotgunKammerer
