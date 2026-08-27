@@ -65835,7 +65835,7 @@ entities:
         key_slots: !type:Container
           showEnts: False
           occludes: True
-          ents:
+          ents: []
         machine_board: !type:Container
           showEnts: False
           occludes: True
