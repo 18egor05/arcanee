@@ -669,12 +669,3 @@ Entries:
   id: 53
   time: '2026-08-27T07:56:34.0000000+00:00'
   url: https://github.com/ArcaneSS14/arcane/pull/258
-- author: Vecortys
-  changes:
-    - type: Remove
-      message: Общая частота связи была выключена.
-    - type: Tweak
-      message: 'Секрет+ Хаос теперь создаёт крупных антагонистов. '
-  id: 54
-  time: '2026-08-27T09:30:16.0000000+00:00'
-  url: https://github.com/ArcaneSS14/arcane/pull/266
