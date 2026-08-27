@@ -662,3 +662,10 @@ Entries:
   id: 52
   time: '2026-08-27T07:54:07.0000000+00:00'
   url: https://github.com/ArcaneSS14/arcane/pull/264
+- author: ReWAFFlution, oldschool_otaku, Snorkcom
+  changes:
+    - type: Add
+      message: Добавлена возможность передачи предмета из рук в руки.
+  id: 53
+  time: '2026-08-27T07:56:34.0000000+00:00'
+  url: https://github.com/ArcaneSS14/arcane/pull/258
