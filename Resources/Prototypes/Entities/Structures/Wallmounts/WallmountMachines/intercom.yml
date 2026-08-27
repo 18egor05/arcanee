@@ -216,8 +216,8 @@
     containers:
       board:
       - IntercomElectronics
-      key_slots: []
-      # - EncryptionKeyCommon # Arcane-remove
+      key_slots:
+      - EncryptionKeyCommon
 
 - type: entity
   id: IntercomCommand
@@ -230,7 +230,7 @@
       board:
       - IntercomElectronics
       key_slots:
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
       - EncryptionKeyCommand
 
 - type: entity
@@ -243,7 +243,7 @@
       board:
       - IntercomElectronics
       key_slots:
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
       - EncryptionKeyEngineering
 
 - type: entity
@@ -256,7 +256,7 @@
       board:
       - IntercomElectronics
       key_slots:
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
       - EncryptionKeyMedical
 
 - type: entity
@@ -269,7 +269,7 @@
       board:
       - IntercomElectronics
       key_slots:
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
       - EncryptionKeyScience
 
 - type: entity
@@ -283,7 +283,7 @@
       board:
       - IntercomElectronics
       key_slots:
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
       - EncryptionKeySecurity
 
 - type: entity
@@ -296,7 +296,7 @@
       board:
       - IntercomElectronics
       key_slots:
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
       - EncryptionKeyService
 
 - type: entity
@@ -309,7 +309,7 @@
       board:
       - IntercomElectronics
       key_slots:
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
       - EncryptionKeyCargo
 
 - type: entity
@@ -322,7 +322,7 @@
       board:
       - IntercomElectronics
       key_slots:
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
       - EncryptionKeyStationMaster
 
 - type: entity
@@ -335,5 +335,5 @@
       board:
       - IntercomElectronics
       key_slots:
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
       - EncryptionKeyFreelance
