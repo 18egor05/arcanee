@@ -696,3 +696,10 @@ Entries:
   id: 56
   time: '2026-08-28T13:39:06.0000000+00:00'
   url: https://github.com/ArcaneSS14/arcane/pull/271
+- author: UmbiMax
+  changes:
+    - type: Tweak
+      message: Усложнён гриф базы InteQ.
+  id: 57
+  time: '2026-08-28T14:35:19.0000000+00:00'
+  url: https://github.com/ArcaneSS14/arcane/pull/269
