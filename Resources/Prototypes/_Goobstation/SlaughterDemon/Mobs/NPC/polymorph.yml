@@ -26,6 +26,9 @@
     - AlienBlood
     - BlackBlood
     - BloodChangeling
+    - FluorosulfuricAcidHumanoidXeno
+    - Slime
+    - Sap
   - type: DemonicWhisper
   - type: Visibility
     layer: 2 # Ghost visflag

@@ -26,6 +26,9 @@
       - AlienBlood
       - BlackBlood
       - BloodChangeling
+      - FluorosulfuricAcidHumanoidXeno
+      - Slime
+      - Sap
   - type: StaticPrice
     price: 10000
 
@@ -46,6 +49,9 @@
       - AlienBlood
       - BlackBlood
       - BloodChangeling
+      - FluorosulfuricAcidHumanoidXeno
+      - Slime
+      - Sap
     - type: SlaughterDevour # allows the demon to devour
       toHeal: # Healing done when eating someone
         groups:
