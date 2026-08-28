@@ -177,5 +177,4 @@ public sealed partial class GrabIntentSystem : EntitySystem
     }
 
     #endregion
-
 }
