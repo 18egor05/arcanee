@@ -843,7 +843,6 @@
     damage:
       types:
         Piercing: 10
-        Cellular: 20
 
 - type: entity
   parent: SurgeryStepBase
