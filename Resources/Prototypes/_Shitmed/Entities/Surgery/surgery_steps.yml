@@ -831,7 +831,7 @@
     - type: Drill
     addOrganOnAdd:
       brain:
-      #- type: OhioAccent CorvaxGoob ohio-accent-removal
+      - type: OhioAccent # Arcane-Edit: Lobotomy brainrot
       - type: RatvarianLanguage
       - type: Clumsy
     duration: 5
@@ -843,6 +843,7 @@
     damage:
       types:
         Piercing: 10
+        Cellular: 20
 
 - type: entity
   parent: SurgeryStepBase
