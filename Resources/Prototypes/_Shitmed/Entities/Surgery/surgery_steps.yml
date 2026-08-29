@@ -831,7 +831,7 @@
     - type: Drill
     addOrganOnAdd:
       brain:
-      - type: OhioAccent
+      - type: OhioAccent # Arcane-Edit: Brainrot on lobotomy
       - type: Clumsy
     duration: 5
   - type: Sprite

@@ -1048,7 +1048,7 @@
   - type: SurgeryOrganOnAddCondition
     components:
       brain:
-      - type: OhioAccent
+      - type: OhioAccent # Arcane-Edit: Brainrot on lobotomy
       - type: Clumsy
     inverse: true
   - type: SurgeryPartCondition
