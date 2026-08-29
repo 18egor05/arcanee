@@ -10,12 +10,10 @@
   - type: ContainerContainer
     containers:
       key_slots: !type:Container
-  # Arcane-start
-  # - type: ContainerFill
-  #   containers:
-  #     key_slots:
-  #     - EncryptionKeyCommon
-  # Arcane-end
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommon
   - type: Headset
   - type: EncryptionKeyHolder
     keySlots: 4
@@ -57,7 +55,7 @@
     containers:
       key_slots:
       - EncryptionKeyCargo
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/cargo.rsi
   - type: Clothing
@@ -85,7 +83,7 @@
       key_slots:
       - EncryptionKeyCargo
       - EncryptionKeyCommand
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
 
 - type: entity
   parent: [ ClothingHeadset, BaseCentcommContraband ]
@@ -128,7 +126,7 @@
     containers:
       key_slots:
       - EncryptionKeyEngineering
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/engineering.rsi
   - type: Clothing
@@ -145,7 +143,7 @@
       key_slots:
       - EncryptionKeyEngineering
       - EncryptionKeyCommand
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
 
 - type: entity
   parent: ClothingHeadset
@@ -157,7 +155,7 @@
     containers:
       key_slots:
       - EncryptionKeyMedical
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/medical.rsi
   - type: Clothing
@@ -174,7 +172,7 @@
       key_slots:
       - EncryptionKeyMedical
       - EncryptionKeyCommand
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
 
 - type: entity
   parent: ClothingHeadset
@@ -186,7 +184,7 @@
     containers:
       key_slots:
       - EncryptionKeyScience
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/science.rsi
   - type: Clothing
@@ -202,7 +200,7 @@
     containers:
       key_slots:
       - EncryptionKeyMedicalScience
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/medicalscience.rsi
   - type: Clothing
@@ -218,7 +216,7 @@
     containers:
       key_slots:
       - EncryptionKeyRobo
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/robotics.rsi
   - type: Clothing
@@ -235,7 +233,7 @@
       key_slots:
       - EncryptionKeyScience
       - EncryptionKeyCommand
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
 
 - type: entity
   parent: [ClothingHeadset, BaseSecurityLawyerContraband]
@@ -247,7 +245,7 @@
     containers:
       key_slots:
       - EncryptionKeySecurity
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/security.rsi
   - type: Clothing
@@ -264,7 +262,7 @@
       key_slots:
       - EncryptionKeyMedical
       - EncryptionKeySecurity
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/brigmedic.rsi
   - type: Clothing
@@ -280,7 +278,7 @@
     containers:
       key_slots:
       - EncryptionKeyService
-      # - EncryptionKeyCommon # Arcane-remove
+      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/service.rsi
   - type: Clothing
