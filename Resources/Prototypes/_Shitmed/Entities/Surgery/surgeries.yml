@@ -1049,7 +1049,6 @@
     components:
       brain:
       - type: OhioAccent
-      - type: RatvarianLanguage
       - type: Clumsy
     inverse: true
   - type: SurgeryPartCondition
