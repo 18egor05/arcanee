@@ -46,7 +46,7 @@
     children:
     # Orion-Start
     - id: MorphInfestation
-    - id: CorticalBorerInfestation
+    # - id: CorticalBorerInfestation # Arcane-remove
     # Orion-End
     - id: ClosetSkeleton
     - id: KingRatMigration
@@ -580,8 +580,8 @@
     chaosScore: 60
   - type: SolarFlareRule
     onlyJamHeadsets: true
-    affectedChannels: []
-    # - Common # Arcane-remove
+    affectedChannels:
+    - Common
     extraChannels:
     - Command
     - Engineering

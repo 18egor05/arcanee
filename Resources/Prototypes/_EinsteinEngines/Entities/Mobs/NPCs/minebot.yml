@@ -85,7 +85,7 @@
   - type: ActiveRadio
     channels:
     # - Binary # Goobstation - replaced with collective mind
-    # - Common # Arcane-remove
+    - Common
     - Supply
   # Goobstation
   - type: CollectiveMind
