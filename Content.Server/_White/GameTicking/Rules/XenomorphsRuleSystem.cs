@@ -244,12 +244,12 @@ public sealed class XenomorphsRuleSystem : GameRuleSystem<XenomorphsRuleComponen
         if (!component.Announced && component.AnnouncementTime <= _timing.CurTime)
         {
             component.Announced = true;
-            // Arcane-Start: Removed xeno announcement and music
+            // Arcane-Edit-Start: Removed xeno announcement and music
           //  if (!string.IsNullOrEmpty(component.Announcement)
         // _chat.DispatchGlobalAnnouncement(Loc.GetString(component.Announcement), component.Sender != null ? Loc.GetString(component.Sender) : null, colorOverride: component.AnnouncementColor);
 
-            // _audioSystem.PlayGlobal(component.XenomorphInfestationSound, Filter.Broadcast(), true);
-            // Arcane-End
+            // _audioSystem.PlayGlobal(component.XenomorphInfestationSound, Filter.Broadcast(), true); // Goobstation - Play music on announcement
+            // Arcane-Edit-End
         }
 
         CheckRoundEnd(uid, component, gameRule);
