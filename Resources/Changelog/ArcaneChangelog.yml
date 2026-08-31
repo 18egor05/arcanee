@@ -795,3 +795,10 @@ Entries:
   id: 64
   time: '2026-08-31T16:09:32.0000000+00:00'
   url: https://github.com/ArcaneSS14/arcane/pull/254
+- author: UmbiMax
+  changes:
+    - type: Tweak
+      message: Крупная переработка всего медблока.
+  id: 65
+  time: '2026-08-31T18:27:03.0000000+00:00'
+  url: https://github.com/ArcaneSS14/arcane/pull/101
