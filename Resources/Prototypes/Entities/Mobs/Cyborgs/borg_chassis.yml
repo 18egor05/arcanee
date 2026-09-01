@@ -31,8 +31,8 @@
     interactSuccessString: petting-success-generic-cyborg
     interactFailureString: petting-failure-generic-cyborg
   - type: BorgSwitchableType
-    inherentRadioChannels: []
-    # - Common # Arcane-remove
+    inherentRadioChannels:
+    - Common
     # - Binary # Goobstation - replaced with collective mind
   - type: BorgSwitchableSubtype # Goobstation
 
