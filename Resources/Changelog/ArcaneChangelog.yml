@@ -818,3 +818,14 @@ Entries:
   id: 67
   time: '2026-09-01T04:36:15.0000000+00:00'
   url: https://github.com/ArcaneSS14/arcane/pull/280
+- author: Kideo000
+  changes:
+    - type: Add
+      message: 'Нижнемат Лавмат. '
+    - type: Fix
+      message: >-
+        Исправлены недостающие кабели в полу для запитки шлюза и интеркома на
+        входе.
+  id: 68
+  time: '2026-09-01T16:03:25.0000000+00:00'
+  url: https://github.com/ArcaneSS14/arcane/pull/283
