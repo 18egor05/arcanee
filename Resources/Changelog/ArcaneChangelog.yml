@@ -809,3 +809,58 @@ Entries:
   id: 66
   time: '2026-09-01T04:34:57.0000000+00:00'
   url: https://github.com/ArcaneSS14/arcane/pull/272
+- author: ReWAFFlution
+  changes:
+    - type: Tweak
+      message: Награда за почту увеличена
+    - type: Fix
+      message: Стоимость платы пользовательских законов составляет 100 кредитов
+  id: 67
+  time: '2026-09-01T04:36:15.0000000+00:00'
+  url: https://github.com/ArcaneSS14/arcane/pull/280
+- author: Kideo000
+  changes:
+    - type: Add
+      message: 'Нижнемат Лавмат. '
+    - type: Fix
+      message: >-
+        Исправлены недостающие кабели в полу для запитки шлюза и интеркома на
+        входе.
+  id: 68
+  time: '2026-09-01T16:03:25.0000000+00:00'
+  url: https://github.com/ArcaneSS14/arcane/pull/283
+- author: HappyRoach
+  changes:
+    - type: Tweak
+      message: Убран скафандр ERT на Аврите.
+  id: 69
+  time: '2026-09-01T18:31:59.0000000+00:00'
+  url: https://github.com/ArcaneSS14/arcane/pull/285
+- author: GrinDers
+  changes:
+    - type: Add
+      message: Добавлена вкладка Уровней Применения Силы (УПС).
+    - type: Add
+      message: Модификаторы перенесены в раздел Космического закона.
+    - type: Tweak
+      message: Обновлена вкладка Космического закона.
+    - type: Tweak
+      message: Актуализировано СРП Офицера "Синий Щит".
+    - type: Tweak
+      message: Актуализировано СРП Представителя NanoTrasen.
+  id: 70
+  time: '2026-09-02T06:53:57.0000000+00:00'
+  url: https://github.com/ArcaneSS14/arcane/pull/286
+- author: UmbiMax
+  changes:
+    - type: Fix
+      message: >-
+        Полный фикс химмастера + удаление мёртвого кода после багов и рефактора
+        апстрима. (Реакций в буфере более не будет)
+    - type: Fix
+      message: >-
+        Химикаты более не учитывают внутреннюю кровь как вещество - фикс
+        моновера, мультивера и многих других, взаимодействующих с кровью. 
+  id: 71
+  time: '2026-09-02T08:03:57.0000000+00:00'
+  url: https://github.com/ArcaneSS14/arcane/pull/284
