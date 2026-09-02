@@ -32,7 +32,7 @@
     # Arcane-Start
   - type: Storage
     grid:
-    - 0,0,5,2
+    - 0,0,5,5
     maxItemSize: Huge
     clickInsert: true
     openOnActivate: false
