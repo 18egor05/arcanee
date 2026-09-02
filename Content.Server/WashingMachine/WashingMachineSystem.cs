@@ -7,13 +7,25 @@
 using Content.Server.Forensics;
 using Content.Shared.WashingMachine;
 using Content.Shared.Forensics.Components;
+// Arcane-Start
+using Content.Shared.Interaction;
+using Content.Shared.Storage;
+using Content.Shared.Verbs;
+using Robust.Shared.Containers;
+using Content.Shared.Popups;
+// Arcane-End
 
 namespace Content.Server.WashingMachine;
 
 public sealed partial class WashingMachineSystem : SharedWashingMachineSystem
 {
+    // Arcane-Start
+    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    // Arcane-End
     public override void Initialize()
     {
+        SubscribeLocalEvent<WashingMachineComponent, GetVerbsEvent<AlternativeVerb>>(AddAltVerbs);
         base.Initialize();
     }
 
@@ -29,9 +41,38 @@ public sealed partial class WashingMachineSystem : SharedWashingMachineSystem
 
             var fiberText = fiber.FiberColor == null
                 ? Loc.GetString("forensic-fibers", ("material", fiber.FiberMaterial))
-                : Loc.GetString("forensic-fibers-colored", ("color", fiber.FiberColor), ("material", fiber.FiberMaterial));
+                : Loc.GetString("forensic-fibers-colored",
+                    ("color", fiber.FiberColor),
+                    ("material", fiber.FiberMaterial));
 
             forensics.Fibers.Add(fiberText);
         }
     }
+    // Arcane-Start
+    private void AddAltVerbs(Entity<WashingMachineComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract)
+            return;
+
+        var target = ent;
+        var user = args.User;
+        var netEntity = GetNetEntity(ent);
+
+        args.Verbs.Add(new AlternativeVerb
+        {
+            Text = Loc.GetString("washing-machine-empty"),
+            IconEntity = netEntity,
+            Act = () => EmptyWashingMachine(target, user)
+        });
+    }
+
+    private void EmptyWashingMachine(Entity<WashingMachineComponent> ent, EntityUid user)
+    {
+        if (!TryComp<StorageComponent>(ent, out var storage))
+            return;
+
+        _container.EmptyContainer(storage.Container);
+        _popup.PopupClient(Loc.GetString("washing-machine-emptied"), ent, user);
+    }
+    // Arcane-End
 }

@@ -29,10 +29,14 @@
         loop: true
     finishedSound:
       path: /Audio/Machines/washing_open.ogg
-  - type: EntityStorage
-    isCollidableWhenOpen: true
-    open: true
-    capacity: 8
+    # Arcane-Start
+  - type: Storage
+    grid:
+    - 0,0,5,2
+    maxItemSize: Huge
+    clickInsert: true
+    openOnActivate: false
+    # Arcane-End
     whitelist:
       components:
         - Clothing
@@ -69,4 +73,3 @@
     - machine_parts
     - machine_board
     - entity_storage
-  - type: PlaceableSurface

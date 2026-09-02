@@ -18,6 +18,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using System.Linq;
+using Content.Shared.Storage; // Arcane-Edit
 
 namespace Content.Shared.WashingMachine;
 
@@ -71,8 +72,10 @@ public abstract partial class SharedWashingMachineSystem : EntitySystem
 
         HashSet<EntityUid> items = new();
 
-        if (TryComp<EntityStorageComponent>(uid, out var entityStorageComp))
-            items = entityStorageComp.Contents.ContainedEntities.ToHashSet();
+        // Arcane-Start
+        if (TryComp<StorageComponent>(uid, out var storageComp))
+            items = storageComp.Container.ContainedEntities.ToHashSet();
+        // Arcane-End
 
         _audio.Stop(component.WashingSoundStream);
         component.WashingSoundStream = null;
@@ -87,8 +90,6 @@ public abstract partial class SharedWashingMachineSystem : EntitySystem
             RaiseLocalEvent(item, itemEv);
 
         UpdateForensics((uid, component), items);
-
-        _storage.OpenStorage(uid);
     }
 
     private void OnInit(Entity<WashingMachineComponent> ent, ref ComponentInit args)
@@ -174,8 +175,10 @@ public abstract partial class SharedWashingMachineSystem : EntitySystem
 
         HashSet<EntityUid> items = new();
 
-        if (TryComp<EntityStorageComponent>(ent.Owner, out var entityStorageComp))
-            items = entityStorageComp.Contents.ContainedEntities.ToHashSet();
+        // Arcane-Start
+        if (TryComp<StorageComponent>(ent.Owner, out var storageComp))
+            items = storageComp.Container.ContainedEntities.ToHashSet();
+        // Arcane-End
 
         if (_net.IsServer)
         {
