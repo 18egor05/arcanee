@@ -20,7 +20,7 @@ using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Slippery;
 using Content.Shared.Popups;
-using Content.Shared.Stains;
+using Content.Shared._Arcane.Stains;
 using Content.Shared.StepTrigger.Components;
 using Content.Shared.StepTrigger.Systems;
 using Robust.Shared.Audio.Systems;
