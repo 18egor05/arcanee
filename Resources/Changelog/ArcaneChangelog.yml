@@ -938,3 +938,12 @@ Entries:
   id: 77
   time: '2026-09-04T02:21:47.0000000+00:00'
   url: https://github.com/ArcaneSS14/arcane/pull/276
+- author: Willow18
+  changes:
+    - type: Tweak
+      message: >-
+        Переведены энтити связанные с Космическим колоссом, а так же менюшка
+        маньяка
+  id: 78
+  time: '2026-09-04T02:54:24.0000000+00:00'
+  url: https://github.com/ArcaneSS14/arcane/pull/290
