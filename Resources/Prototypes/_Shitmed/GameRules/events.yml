@@ -15,7 +15,7 @@
       Medical: 75
     eventType: HostilesSpawn
   - type: GameRule
-    chaosScore: 300 # Arcane-Edit: 150 > 300
+    chaosScore: 300 # Arcane-Edit: 100 > 300
   - type: RuleGrids
   - type: LoadMapRule
     mapPath: /Maps/_Shitmed/Shuttles/ShuttleEvent/abductor_shuttle.yml
