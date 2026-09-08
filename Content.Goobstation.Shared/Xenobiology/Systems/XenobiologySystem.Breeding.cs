@@ -101,7 +101,7 @@ public partial class XenobiologySystem
             // Orion-End
 
             DoMitosis((uid, slime));
-            slime.NextUpdateTime = _gameTiming.CurTime + slime.UpdateInterval;
+            slime.NextUpdateTime = _timing.CurTime + slime.UpdateInterval; // Arcane-Edit
         }
     }
 

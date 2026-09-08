@@ -112,7 +112,7 @@ public sealed partial class SlimeLatchSystem : EntitySystem
     {
         var addedHunger = (float) ent.Comp.Damage.GetTotal();
 
-        ent.Comp.NextTickTime = _gameTiming.CurTime + ent.Comp.Interval;
+//        ent.Comp.NextTickTime = _gameTiming.CurTime + ent.Comp.Interval; // Arcane-Edit
 
         // Orion-Edit-Start
         var damage = ent.Comp.Damage;
