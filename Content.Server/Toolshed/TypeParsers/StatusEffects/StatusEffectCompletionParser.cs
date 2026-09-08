@@ -9,9 +9,8 @@ namespace Content.Server.Toolshed.TypeParsers.StatusEffects;
 
 public sealed class StatusEffectCompletionParser : CustomCompletionParser<EntProtoId>
 {
-    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!; // Arcane
     public override CompletionResult? TryAutocomplete(ParserContext ctx, CommandArgument? arg)
     {
-        return CompletionResult.FromHintOptions(_statusEffects.StatusEffectPrototypes, GetArgHint(arg)); // Arcane-Edit
+        return CompletionResult.FromHintOptions(StatusEffectsSystem.StatusEffectPrototypes, GetArgHint(arg));
     }
 }
